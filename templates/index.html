@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7f8fa">
+    <title>Weather — a little clarity for your day</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <header class="header">
+            <a class="brand" href="/" aria-label="Weather home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 18a4 4 0 0 1-.6-7.95A6 6 0 0 1 18 8.5a4.75 4.75 0 0 1-.75 9.5Z"/></svg>weather<span class="brand-dot">.</span></a>
+            <span class="header-note">A little clarity for your day.</span>
+        </header>
+
+        <section class="intro" aria-labelledby="page-title">
+            <p class="eyebrow">YOUR DAILY OUTLOOK</p>
+            <h1 id="page-title">Every day starts<br>with the weather.</h1>
+            <p class="subtitle">Find out what it feels like, wherever you are.</p>
+        </section>
+
+        <section class="search-section" aria-label="Find weather">
+            <form class="search-box" id="search-form">
+                <label class="sr-only" for="city">City name</label>
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
+                <input type="search" id="city" placeholder="Search for a city" autocomplete="address-level2" maxlength="150">
+                <button type="submit" id="search-button">Search <span aria-hidden="true">&rarr;</span></button>
+            </form>
+            <p id="message" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="empty-state" id="empty-state" aria-label="Get started">
+            <div class="empty-symbol" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="32" cy="32" r="12"/><path d="M32 5v7m0 40v7M5 32h7m40 0h7M13 13l5 5m28 28 5 5M13 51l5-5m28-28 5-5"/></svg></div>
+            <h2>A new place, a fresh forecast.</h2>
+            <p>Enter a city above to see the current conditions.</p>
+        </section>
+
+        <section class="weather-card" id="weather-result" aria-labelledby="city-name" hidden>
+            <div class="current-weather">
+                <div class="location"><p class="eyebrow"><span class="status-dot"></span> CURRENT WEATHER</p><h2 id="city-name"></h2><p id="description"></p></div>
+                <div id="weather-icon" aria-hidden="true"></div>
+            </div>
+            <div class="temperature-section"><p id="temperature"></p><p class="temperature-label">Degrees Celsius</p></div>
+            <dl class="details">
+                <div class="detail"><dt>Feels like</dt><dd id="feels-like"></dd></div>
+                <div class="detail"><dt>Humidity</dt><dd id="humidity"></dd></div>
+                <div class="detail"><dt>Wind speed</dt><dd id="wind-speed"></dd></div>
+                <div class="detail"><dt>Conditions</dt><dd id="conditions"></dd></div>
+            </dl>
+            <div class="summary"><h3>At a glance</h3><p id="summary"></p></div>
+        </section>
+        <footer class="footer"><span>Weather, simply.</span><span>Data by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo <span aria-hidden="true">&nearr;</span></a></span></footer>
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
